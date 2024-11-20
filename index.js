@@ -2,6 +2,7 @@ let todoInput = document.querySelector(".input");
 let todobuttonadd = document.querySelector(".button");
 let todo;
 let todoList = [];
+let showTodos = document.querySelector(".todos-container");
 
 function uuid(){
     return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(param){
@@ -17,7 +18,11 @@ todobuttonadd.addEventListener("click", (e)=>{
      if(todo){
         todoList.push({id: uuid(), todo: todo, isCompleted: false});
      }
-     console.log(todoList);
-     console.log(todoList.todo);
+     render(todoList);
 
 })
+
+function render(todolist){
+    showTodos.innerHTML = todolist.map(todo => `<div><input id="item-${todo.id}" type="checkbox" data-key=${todo.id}> <label for="item-${todo.id}" class="todo" data-key=${todo.id}>${todo.todo}</label> <button>delete</button></div>`);        
+}
+render(todoList);
