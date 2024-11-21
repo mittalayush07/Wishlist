@@ -66,6 +66,7 @@ body {
 
 .todo-text {
   word-wrap: break-word;
+  margin-left: 10px;
 }
 
 .checked-todo {
